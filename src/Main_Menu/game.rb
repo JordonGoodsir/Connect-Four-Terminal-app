@@ -4,8 +4,18 @@ require_relative 'board.rb'
 
 
 class Game 
-    @@array = ["        ","        ","        ","   x   ","        ","        ","        "]
+    @@player1_icon = "   x   "
+    @@player2_icon = "   o   " 
+    @@turn_counter = 0
+    if @@turn_counter.odd?
+        @@array = ["        ","        ","        ","#{@@player1_icon}","        ","        ","        "] 
+    elsif @@turn_counter.even?
+        @@array = ["        ","        ","        ","#{@@player2_icon}","        ","        ","        "] 
+    end 
     
+    # @@array = ["        ","        ","        ","#{@@player2_icon}","        ","        ","        "]  
+    
+   
     def initialize(board) 
 @board = board 
 print_board
@@ -16,6 +26,10 @@ selector
 def print_board    
 p @@array.join 
 $board.each{ |each_board| puts each_board.join}
+end 
+
+def next_turn 
+
 end
     
 
@@ -31,14 +45,16 @@ end
             #"d" to go right through an array (selector) 
             # works by adding index and swapping the player piece around in array with white spaces
             when "d"  
-                count += 1  
+                count += 1   
                 if count == 7 
                     count -= 1 
                 end
                 past_position = count - 1
                 @@array[past_position], @@array[count] = @@array[count], @@array[past_position]
                 system("clear") 
+                p count
                 print_board 
+                 
               
             #"a" to go left throught array (selector)
             # works by adding index and swapping the player piece around in array with white spaces
@@ -50,13 +66,16 @@ end
                 past_position_a = count + 1 
                 @@array[past_position_a], @@array[count] = @@array[count], @@array[past_position_a]
                 system("clear") 
-                print_board
-            
-            when "s" 
-                puts "downs" 
+                p count 
+                print_board 
             
             when "\r" 
-                puts "enter"
+                #enter key
+                #future - make it so that this changes turn to next player 
+                # p count  
+
+                @@turn_counter += 1 
+                p @@turn_counter
             end
         end  
     end 

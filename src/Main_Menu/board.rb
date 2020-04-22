@@ -25,4 +25,7 @@ $board = [
 # puts "" 
 # puts ""
 # $board.each{ |each_board| puts each_board.join}  
-$board[0][1]
+# if $board[0][1] == "       " 
+#     $board[0][1] = "hi" 
+#     p $board[0][1]
+# end
