@@ -1,39 +1,43 @@
 require "colorize" 
 require "tty-prompt" 
 require_relative "user_creation.rb" 
+require_relative "tutorial.rb" 
 
-prompt = TTY::Prompt.new 
+ 
 
+def main_menu 
 
-# title_array1 = [
-#                                 "      ██████  ██████  ███    ██ ███    ██ ███████  ██████ ████████       ",    
-#                                 "    ██       ██    ██ ████   ██ ████   ██ ██      ██         ██      ",   
-#                                 "    ██       ██    ██ ██ ██  ██ ██ ██  ██ █████   ██         ██     ",   
-#                                 "    ██       ██    ██ ██  ██ ██ ██  ██ ██ ██      ██         ██      ", 
-#                                 "     ██████   ██████  ██   ████ ██   ████ ███████  ██████    ██  "      
-#                                       ]
-# title_array1.map {|v| puts v.red} 
-# sleep 0.7
-#                             title_array2 = [ 
-#                                 "                 ███████  ██████  ██    ██ ██████             ",
-#                                 "                 ██      ██    ██ ██    ██ ██   ██             ",
-#                                 "                 █████   ██    ██ ██    ██ ██████            ",
-#                                 "                 ██      ██    ██ ██    ██ ██   ██            ",
-#                                 "                 ██       ██████   ██████  ██   ██         "]
+prompt = TTY::Prompt.new
+
+title_array1 = [
+                                "      ██████  ██████  ███    ██ ███    ██ ███████  ██████ ████████       ",    
+                                "    ██       ██    ██ ████   ██ ████   ██ ██      ██         ██      ",   
+                                "    ██       ██    ██ ██ ██  ██ ██ ██  ██ █████   ██         ██     ",   
+                                "    ██       ██    ██ ██  ██ ██ ██  ██ ██ ██      ██         ██      ", 
+                                "     ██████   ██████  ██   ████ ██   ████ ███████  ██████    ██  "      
+                                      ]
+title_array1.map {|v| puts v.red} 
+sleep 0.7
+                            title_array2 = [ 
+                                "                 ███████  ██████  ██    ██ ██████             ",
+                                "                 ██      ██    ██ ██    ██ ██   ██             ",
+                                "                 █████   ██    ██ ██    ██ ██████            ",
+                                "                 ██      ██    ██ ██    ██ ██   ██            ",
+                                "                 ██       ██████   ██████  ██   ██         "]
                             
-# title_array2.each {|v| puts v.yellow}  
-# sleep 0.5 
+title_array2.each {|v| puts v.yellow}  
+sleep 0.5 
 
 
-# puts
+puts
 
 
 
 
-choices = prompt.select("Welcome, what would you like to do?".center(68)) do |menu| 
-    menu.choice "Play", 1 
-    menu.choice "Tutorial", 2
-    menu.choice "Quit", 3 
+choices = prompt.select("Welcome, what would you like to do?".rjust(51)) do |menu| 
+    menu.choice "Play".center(65), 1 
+    menu.choice "Tutorial".center(65), 2
+    menu.choice "Quit".center(65), 3 
 
 end
 
@@ -44,13 +48,18 @@ when 1
 
 when 2  
     system("clear")
-   #tutorial not done yet 
+    tutorial 
 
 when 3 
 system"clear" 
 puts "Thanks for playing :)" 
 exit
 end   
+
+end  
+
+main_menu
+
 
 
 
