@@ -20,7 +20,9 @@ selector
 def print_board    
 # p @@array.join 
 $board.each{ |each_board| puts each_board.join}
-end 
+end  
+
+
 
 def dummy_array 
 @dummy = ["        ","        ","        ","#{@@player1_icon}","        ","        ","        "] 
@@ -32,8 +34,10 @@ end
     def selector   
         count = 3 
         array = ["        ","        ","        ","#{@@player1_icon}","        ","        ","        "] 
-       
-
+        num_values = 7 
+        other_values = 7
+        num = 12 
+     
         loop do 
             case STDIN.getch() 
             #press q to quit whole program
@@ -73,8 +77,41 @@ end
                 #future - make it so that this changes turn to next player 
                 # p count  
 
-                @@turn_counter += 1 
+            @@turn_counter += 1 
+             
+
+        #     case count 
+        #     when 0 
+        #       count += 1 
+        #     when 1 
+        #       count += 2 
+        #     when 2 
+        #       count += 3  
+        #     when 3 
+        #       count += 4 
+        #    when 4 
+        #       count += 5 
+        #     when 5 
+        #       count += 6 
+        #     when 6 
+        #       count += 7 
+        #     end  
                 
+        #     if other_values == num_values  
+        #         $board[num][count] = "   x   " 
+        #         num -= 2 
+        #         other_values -= 1 
+        #     end 
+            
+        #     num_values -= 1 
+            
+            
+        #     # new ajustment, full reset count to 3
+        #     if num_values == -1 
+        #         break 
+        #     end
+
+
                 #changes players turn
                 if @@turn_counter.odd?
                   array = ["        ","        ","        ","#{@@player1_icon}","        ","        ","        "] 

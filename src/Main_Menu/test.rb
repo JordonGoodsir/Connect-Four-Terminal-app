@@ -1,3 +1,5 @@
+require 'io/console'
+
 array = [ 
     ["|","       ","|","       ","|","       ","|","       ","|","       ","|","       ","|","       ","|"], 
     ["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-"], 
@@ -11,7 +13,7 @@ array = [
     ["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-"],   
     ["|","       ","|","       ","|","       ","|","       ","|","       ","|","       ","|","       ","|"], 
     ["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-"],    
-    ["|","   x   ","|","       ","|","       ","|","       ","|","       ","|","       ","|","       ","|"], 
+    ["|","       ","|","       ","|","       ","|","       ","|","       ","|","       ","|","       ","|"], 
     ["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-"],
     ] 
 count = 0 
@@ -22,67 +24,76 @@ when 0
 when 1 
     count += 2 
 when 2 
-    count += 3 
+    count += 3  
+when 3 
+    count += 4 
+when 4 
+    count += 5 
+when 5 
+    count += 6 
+when 6 
+    count += 7 
 end  
 
-p count 
+# p count 
 
-if array[12][count] == "       " 
-    array[12][count] =  "   x   "
+# if array[12][count] == "       " 
+#     array[12][count] =  "   x   "
 
-elsif array[10][count] == "       " 
-    array[10][count] =  "   x   "   
+# elsif array[10][count] == "       " 
+#     array[10][count] =  "   x   "   
 
-elsif array[8][count] == "       " 
-    array[8][count] =  "   x   "  
+# elsif array[8][count] == "       " 
+#     array[8][count] =  "   x   "  
 
-elsif array[6][count] == "       " 
-    array[6][count] =  "   x   " 
+# elsif array[6][count] == "       " 
+#     array[6][count] =  "   x   " 
 
-elsif array[4][count] == "       " 
-    array[4][count] =  "   x   "  
+# elsif array[4][count] == "       " 
+#     array[4][count] =  "   x   "  
 
-elsif array[2][count] == "       " 
-    array[2][count] =  "   x   "  
+# elsif array[2][count] == "       " 
+#     array[2][count] =  "   x   "  
 
-elsif array[0][count] == "       " 
-    array[0][count] =  "   x   "
-end  
-
-array.each {|each_array| puts each_array.join} 
-
-# s.each do |sub_array|
-#     sub_array.each do |item|
-#         puts item
-#     end
-# end
-
-# array.each do |each_value| 
-#     each_value.each_slice(1) { |n| p n }
-    # each_value.each_with_index do |v,i|
-    # p i.each_slice(2) { |n| p n.first }
-    # # p v.each_slice(2) { |n| p n.first } 
-    # end
-# end 
-
-# arr = [[1, 2],[3, 4],[5, 6]]
-
-# # arr.each_slice(2) { |n| p n.first }
+# elsif array[0][count] == "       " 
+#     array[0][count] =  "   x   "
+# end  
 
 
 
+ 
+
+num_values = 7 
+other_values = 7
+num = 12 
+
+loop do 
 
 
-    #model
-#array[count][number]  
+case STDIN.getch() 
 
+when "q" 
+    break 
 
+when "\r" 
+    system("clear") 
+    
+    if other_values == num_values  
+        array[num][count] = "   x   " 
+        num -= 2 
+        other_values -= 1 
+    end 
+    
+    num_values -= 1 
+    
+    
+    # new ajustment, full reset count to 3
+    if num_values == -1 
+        break 
+    end 
+    array.each {|each_array| puts each_array.join}
 
+end 
 
-
-
-
-
-
-
-
+end
+    
