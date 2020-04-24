@@ -42,7 +42,17 @@ def place_value(num_values, other_values, vertical_num)
     $board[vertical_num][@count] = piece 
     vertical_num -= 2 
     other_values -= 1 
-end 
+    end  
+
+  #unique value idea
+    # uniqe_value_1  
+    # uniqe_value_2 
+    # uniqe_value_3 
+
+  #hash idea 
+  # keys = 0,2,4,6,8,10,12 
+  #values = -12,-10,-8,-6,-4,-2 
+   
 
 num_values -= 1  
 p num_values 
@@ -111,7 +121,9 @@ end
                 p array.join
                 print_board  
         
-        when "w"
+        when "w" 
+          victory
+          break
             
         when "\r" 
                 #enter key

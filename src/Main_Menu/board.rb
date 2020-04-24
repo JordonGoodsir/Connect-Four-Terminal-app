@@ -18,17 +18,5 @@ $board = [
 ]  
 
 
-# system("clear")
-
-# print "#{$player1_name}"
-# puts "#{$player2_name}".rjust(32) 
-# puts ""
-# puts "" 
-# puts ""
-# $board.each{ |each_board| puts each_board.join}  
-# if $board[0][1] == "       " 
-#     $board[0][1] = "hi" 
-#     p $board[0][1]
-# end 
 
 

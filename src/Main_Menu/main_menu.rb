@@ -1,8 +1,8 @@
 require "colorize" 
 require "tty-prompt" 
+require 'artii' 
 require_relative "user_creation.rb" 
 require_relative "tutorial.rb" 
-
  
 
 def main_menu 
@@ -52,8 +52,16 @@ when 2
 
 when 3 
 system"clear" 
-puts "Thanks for playing :)" 
+#good bye message
+t = Artii::Base.new 
+f = Artii::Base.new 
+pl = Artii::Base.new 
+
+puts t.asciify("Thanks").red 
+puts f.asciify(" for")
+puts pl.asciify(" playing !").yellow
 exit
+
 end   
 
 end  
