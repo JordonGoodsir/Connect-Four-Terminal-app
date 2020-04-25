@@ -9,9 +9,9 @@ def name_get
         :precision => 20) 
 
 puts "Player1 will go first, decide deserves to go first? (｀∀´)Ψ"
-puts
-puts "Player1 What is your gAmEr name?"  
-sleep 1 
+puts 
+sleep 1
+puts "Player1 What is your gAmEr name?"   
 $player1_name = gets.chomp.split.map(&:capitalize).join(' ')  
 puts
 sleep 0.5

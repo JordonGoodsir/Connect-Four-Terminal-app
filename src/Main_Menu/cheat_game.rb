@@ -89,24 +89,34 @@ end
                 
               $count += 1   
 
-                if $count == 7 
-                    $count -= 1 
+                past_position = $count - 1 
+                
+                if $count >= 6 or $count < 0 
+                $count = 6 
+                @@selector_array[past_position], @@selector_array[$count] = @@selector_array[$count], @@selector_array[past_position] 
+                format 
+                else 
+                @@selector_array[past_position], @@selector_array[$count] = @@selector_array[$count], @@selector_array[past_position] 
+                format 
                 end
-                past_position = $count - 1
-                @@selector_array[past_position], @@selector_array[$count] = @@selector_array[$count], @@selector_array[past_position]   
-                format
                  
               
             #"a" to go left throught array (selector)
             # works by adding index and swapping the player piece around in array with white spaces
             when "a" 
             $count -= 1  
-            if $count == -1 
-                $count += 1 
-            end
+            
                 past_position_a = $count + 1 
-                @@selector_array[past_position_a], @@selector_array[$count] = @@selector_array[$count], @@selector_array[past_position_a]   
-                format
+                
+
+                if $count <= 0 
+                  $count = 0 
+                  @@selector_array[past_position_a], @@selector_array[$count] = @@selector_array[$count], @@selector_array[past_position_a] 
+                  format 
+                  else 
+                  @@selector_array[past_position_a], @@selector_array[$count] = @@selector_array[$count], @@selector_array[past_position_a] 
+                  format 
+                  end
 
             when "w" 
             victory
