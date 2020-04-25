@@ -1,5 +1,5 @@
-def tutorial  
-goin = TTY::Prompt.new
+
+def tutorial 
 puts "-------------------------------------------------------------------------------------------------------------------"
 puts "                                       ˜”*°•.˜”*°• Key Bindings •°*”˜.•°*”˜                                        "
 puts "d" 
@@ -19,19 +19,22 @@ puts "To play Connect 4, try to get 4 of your color checkers in a row horizontal
 puts "opponent. When it's your turn, drop one of your checkers into one of the slots at the top of the plastic grid. Then," 
 puts "let your opponent take their turn." 
 puts "-------------------------------------------------------------------------------------------------------------------"  
+back_menu
 
+end   
 
-back = goin.select("𝔹𝕒𝕔𝕜 𝕋𝕠 𝕄𝕖𝕟𝕦?".rjust(64)) do |back| 
-    back.choice "Yes", 1   
-end
-
-    case back 
-    when 1
-        system("clear")
-        main_menu 
+def back_menu 
+    goin = TTY::Prompt.new
+    
+    back = goin.select("𝔹𝕒𝕔𝕜 𝕋𝕠 𝕄𝕖𝕟𝕦?".rjust(64)) do |back| 
+        back.choice "Yes", 1   
     end
-
-
-end  
+    
+        case back 
+        when 1
+            system("clear")
+            main_menu 
+        end
+end
 
 

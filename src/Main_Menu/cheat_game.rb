@@ -1,6 +1,7 @@
-require 'colorize'
-require 'io/console' 
-require_relative 'board.rb'
+# require 'colorize'
+# require 'io/console' 
+# require_relative 'board.rb' 
+
 
 
 class Game 
@@ -13,15 +14,21 @@ class Game
     @@called3 = 0
     @@called4 = 0
     @@called5 = 0
-    @@called6 = 0
+    @@called6 = 0 
   
  
     def initialize(board) 
 @board = board 
+# print_names  
 dummy_array
 print_board
 selector
     end 
+    
+# def print_names  
+# puts "#{$player1_name}".red 
+# print "#{$player2_name}".rjust.yellow 
+# end
 
 
 def print_board    
@@ -45,7 +52,8 @@ end
         array = ["        ","        ","        ","#{@@player1_icon}","        ","        ","        "] 
         
         loop do 
-            case STDIN.getch() 
+             
+          case STDIN.getch() 
             #press q to quit whole program
             when "q" 
                break 
@@ -76,9 +84,12 @@ end
                 array[past_position_a], array[count] = array[count], array[past_position_a] 
                 system("clear")   
                 p array.join
-                print_board 
+                print_board  
+
+            when "w" 
+            victory
             
-            when "\r" 
+            when "\r"  
                 #enter key
                 #future - make it so that this changes turn to next player 
                 # p count  
@@ -93,7 +104,6 @@ end
               num = @@called0 * -2 + 14 
               num_values = @@called0 * -1 + 7 
               other_values = @@called0 * -1 + 7  
-              work
 
             when 1 
               count += 2 
@@ -187,4 +197,4 @@ end
     end 
 end 
 end
-game = Game.new($board)
+# game = Game.new($board)
