@@ -2,6 +2,7 @@ require 'io/console'
 require "colorize" 
 require "tty-prompt" 
 require 'artii'  
+require 'bar-of-progress' 
 require_relative "user_creation.rb" 
 require_relative "tutorial.rb"  
 require_relative "cheat_game.rb"

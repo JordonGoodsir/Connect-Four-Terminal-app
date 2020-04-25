@@ -14,14 +14,13 @@ class Game
     @@called3 = 0
     @@called4 = 0
     @@called5 = 0
-    @@called6 = 0 
+    @@called6 = 0  
+    @@selector_array = ["        ","        ","        ","#{@@player1_icon}","        ","        ","        "] 
   
  
     def initialize(board) 
-@board = board 
-print_names  
-dummy_array
-print_board
+@board = board  
+format
 selector
     end 
     
@@ -43,17 +42,14 @@ def print_board
 $board.each{ |each_board| puts each_board.join}
 end  
 
-# def format 
-#   system("clear")   
-#   print_names
-#   p array.join
-#   print_board 
-# end
+def format 
+  system("clear")   
+  print_names
+  p @@selector_array.join
+  print_board  
+  puts "         Press w at anytime to declare a winner!"
+end
 
-def dummy_array 
-@dummy = ["        ","        ","        ","#{@@player1_icon}","        ","        ","        "]   
-p @dummy.join
-end 
 
 def place_piece(called)  
   num = called * -2 + 14  
@@ -79,8 +75,7 @@ end
 #sets controls for selecting which coloumn player whishes to put piece in
     def selector   
         $count = 3 
-        array = ["        ","        ","        ","#{@@player1_icon}","        ","        ","        "]  
-        
+          
         loop do 
              
           case STDIN.getch() 
@@ -98,11 +93,8 @@ end
                     $count -= 1 
                 end
                 past_position = $count - 1
-                array[past_position], array[$count] = array[$count], array[past_position] 
-                system("clear")
-                print_names
-                p array.join
-                print_board 
+                @@selector_array[past_position], @@selector_array[$count] = @@selector_array[$count], @@selector_array[past_position]   
+                format
                  
               
             #"a" to go left throught array (selector)
@@ -113,11 +105,8 @@ end
                 $count += 1 
             end
                 past_position_a = $count + 1 
-                array[past_position_a], array[$count] = array[$count], array[past_position_a] 
-                system("clear")   
-                print_names
-                p array.join
-                print_board  
+                @@selector_array[past_position_a], @@selector_array[$count] = @@selector_array[$count], @@selector_array[past_position_a]   
+                format
 
             when "w" 
             victory
@@ -168,22 +157,16 @@ end
 
                 #changes players turn
                 if @@turn_counter.odd?
-                  array = ["        ","        ","        ","#{@@player1_icon}","        ","        ","        "] 
+                  @@selector_array = ["        ","        ","        ","#{@@player1_icon}","        ","        ","        "] 
                 elsif @@turn_counter.even?
-                  array = ["        ","        ","        ","#{@@player2_icon}","        ","        ","        "]     
+                  @@selector_array = ["        ","        ","        ","#{@@player2_icon}","        ","        ","        "]     
                 end
                 
                 #resets piece to the middle of the board on a mechanical level
                 if $count != 3 
                     $count = 3 
                 end 
-                
-                #resets the peice to the middle of the board on a visual level
-                system("clear")  
-                print_names
-                p array.join   
-                print_board  
-                # format
+                format
         end  
     end 
 end 
