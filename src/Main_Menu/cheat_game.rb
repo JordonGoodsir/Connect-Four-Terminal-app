@@ -119,6 +119,7 @@ end
                   end
 
             when "w" 
+            reset_board
             victory
             
             when "\r"  

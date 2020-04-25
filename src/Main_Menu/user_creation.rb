@@ -1,3 +1,9 @@
+class TooLong1 < ArgumentError 
+end 
+class TooLong2 < ArgumentError 
+end
+
+
 
 def name_get
     loading = BarOfProgress.new(:total => 50,
@@ -11,14 +17,42 @@ def name_get
 puts "Player1 will go first, decide deserves to go first? (｀∀´)Ψ"
 puts 
 sleep 1
-puts "Player1 What is your gAmEr name?"   
-$player1_name = gets.chomp.split.map(&:capitalize).join(' ')  
-puts
-sleep 0.5
-puts "Player2 What is your gAmEr name?" 
-$player2_name = gets.chomp.split.map(&:capitalize).join(' ')  
 
- 
+begin
+puts "Player1 What is your gAmEr name(max 7 characters)?" 
+$player1_name = gets.chomp.split.map(&:capitalize).join(' ')   
+raise TooLong1, "Sorry player1 that names more than 7 characters, try again :)" if $player1_name.length >= 7 
+
+rescue TooLong1 => e 
+    puts "-------"
+    puts "#{e.message}"  
+    puts "-------" 
+    sleep 1 
+    system("clear") 
+    retry  
+end
+
+
+puts
+sleep 0.5 
+
+begin
+
+puts "Player2 What is your gAmEr name(max 7 characters)?" 
+$player2_name = gets.chomp.split.map(&:capitalize).join(' ') 
+raise TooLong2, "Sorry player2 that names more than 7 characters, try again :)" if $player2_name.length >= 7  
+
+rescue TooLong2 => e 
+    puts "-------"
+    puts "#{e.message}"  
+    puts "-------" 
+    sleep 1 
+    system("clear") 
+    retry 
+end
+
+
+
 
 progress = 0
 loop do 
