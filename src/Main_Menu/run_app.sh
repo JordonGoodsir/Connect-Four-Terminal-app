@@ -1,4 +1,4 @@
-chmod +x run_app.sh
+#!/bin/bash
 
 bundle install 
 
