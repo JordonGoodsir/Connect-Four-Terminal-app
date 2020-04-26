@@ -5,8 +5,10 @@
 
 
 class Game 
-    @@player1_icon = "   x   "
-    @@player2_icon = "   o   " 
+    @@player1_icon = "x".red 
+    @@player2_icon = "o".yellow
+  # # @@player1_icon = "   x   "
+  #   @@player2_icon = "   o   " 
     @@turn_counter = 1 
     @@called0 = 0
     @@called1 = 0
@@ -15,7 +17,7 @@ class Game
     @@called4 = 0
     @@called5 = 0
     @@called6 = 0  
-    @@selector_array = ["        ","        ","        ","#{@@player1_icon}","        ","        ","        "] 
+    @@selector_array = ["        ","        ","        ","    #{@@player1_icon}    ","        ","        ","        "] 
   
  
     def initialize(board) 
@@ -45,7 +47,7 @@ end
 def format 
   system("clear")   
   print_names
-  p @@selector_array.join
+  puts @@selector_array.join
   print_board  
   puts "         Press w at anytime to declare a winner!"
 end
@@ -57,9 +59,9 @@ def place_piece(called)
   other_values = called * -1 + 7  
   
  if @@turn_counter.odd? 
-    piece = "   x   " 
+    piece = "   #{@@player1_icon}   " 
   elsif @@turn_counter.even?
-    piece = "   o   " 
+    piece = "   #{@@player2_icon}   " 
   end
 
   if num_values < 0 
@@ -168,9 +170,9 @@ end
 
                 #changes players turn
                 if @@turn_counter.odd?
-                  @@selector_array = ["        ","        ","        ","#{@@player1_icon}","        ","        ","        "] 
+                  @@selector_array = ["        ","        ","        ","    #{@@player1_icon}    ","        ","        ","        "] 
                 elsif @@turn_counter.even?
-                  @@selector_array = ["        ","        ","        ","#{@@player2_icon}","        ","        ","        "]     
+                  @@selector_array = ["        ","        ","        ","    #{@@player2_icon}    ","        ","        ","        "]     
                 end
                 
                 #resets piece to the middle of the board on a mechanical level
