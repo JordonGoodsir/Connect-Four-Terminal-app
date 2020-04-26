@@ -42,8 +42,10 @@ $board = [
 @@called4 = 0
 @@called5 = 0
 @@called6 = 0 
-@@turn_counter = 1  
-
+@@turn_counter = 1 
+@@player1_icon = "x".red 
+@@player2_icon = "o".yellow   
+@@selector_array = ["        ","        ","        ","    #{@@player1_icon}    ","        ","        ","        "]
 end 
 
 
