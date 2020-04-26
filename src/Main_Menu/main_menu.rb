@@ -11,6 +11,7 @@ require_relative 'victory_screen.rb'
  
 
 def main_menu 
+system("clear") 
 
 prompt = TTY::Prompt.new
 
@@ -65,15 +66,32 @@ f = Artii::Base.new
 pl = Artii::Base.new 
 
 puts t.asciify("Thanks").red 
-puts f.asciify(" for")
-puts pl.asciify(" playing !").yellow
+puts f.asciify(" For")
+puts pl.asciify(" Playing !").yellow
 exit
 
 end   
 
 end  
 
-main_menu
+
+def start_game 
+    if ARGV[0] == "play"  
+    system("clear") 
+    $player1_name = "Player1"
+    $player2_name = "Player2"
+    game = Game.new($board) 
+
+    elsif ARGV[0] == "tutorial" 
+    system("clear")
+    tutorial 
+    
+    else 
+        main_menu 
+    end 
+end 
+
+start_game
 
 
 

@@ -17,10 +17,12 @@ puts ""
 puts "w" 
 puts "brings you to the victory screen, from there you select who has won."
 puts "-------------------------------------------------------------------------------------------------------------------"  
-puts "                                       ˜”*°•.˜”*°• How To Play •°*”˜.•°*”˜                                         " 
+puts "                                       ˜”*°•.˜”*°• How To Play •°*”˜.•°*”˜                                         "  
+puts
 puts "To play Connect 4, try to get 4 of your color checkers in a row horizontally, vertically, or diagonally before your" 
 puts "opponent. When it's your turn, drop one of your checkers into one of the slots at the top of the plastic grid. Then," 
-puts "let your opponent take their turn." 
+puts "let your opponent take their turn."  
+puts
 puts "-------------------------------------------------------------------------------------------------------------------"  
 back_menu
 

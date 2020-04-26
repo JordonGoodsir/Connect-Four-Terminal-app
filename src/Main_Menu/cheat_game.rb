@@ -5,10 +5,9 @@
 
 
 class Game 
+   
     @@player1_icon = "x".red 
-    @@player2_icon = "o".yellow
-  # # @@player1_icon = "   x   "
-  #   @@player2_icon = "   o   " 
+    @@player2_icon = "o".yellow 
     @@turn_counter = 1 
     @@called0 = 0
     @@called1 = 0
@@ -21,8 +20,7 @@ class Game
   
  
     def initialize(board) 
-@board = board  
-format
+@board = board   
 selector
     end 
     
@@ -38,10 +36,11 @@ if @@turn_counter.even?
 elsif  
   puts "#{$player2_name}".rjust(57 - $player2_name.length) 
 end
+
 end
 
 def print_board     
-$board.each{ |each_board| puts each_board.join}
+  $board.each{ |each_board| puts each_board.join}
 end  
 
 def format 
@@ -76,6 +75,7 @@ end
 
 #sets controls for selecting which coloumn player whishes to put piece in
     def selector   
+        format
         $count = 3 
           
         loop do 
@@ -83,7 +83,10 @@ end
           case STDIN.getch() 
             #press q to quit whole program
             when "q" 
-               break 
+              system("clear") 
+              reset_board 
+              main_menu 
+                
             
             #"d" to go right through an array (selector) 
             # works by adding index and swapping the player piece around in array with white spaces
@@ -121,8 +124,9 @@ end
                   end
 
             when "w" 
-            reset_board
-            victory
+            reset_board   
+            victory 
+            
             
             when "\r"  
                 #enter key
@@ -179,8 +183,11 @@ end
                 if $count != 3 
                     $count = 3 
                 end 
-                format
+                format 
         end  
-    end 
+    end    
+end  
 end 
-end
+
+
+
