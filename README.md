@@ -1,5 +1,9 @@
 # ReadMe, Connect Four edition
 
+**GitHub repo:**
+
+https://github.com/JordonGoodsir/Connect-Four-Terminal-app
+
 
 
 ### Statement of Purpose and Scope 
