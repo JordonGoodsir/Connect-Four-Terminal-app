@@ -124,6 +124,7 @@ end
                   end
 
             when "w" 
+            system("clear")
             reset_board   
             victory 
             

@@ -124,7 +124,7 @@ Error handling instances include
 
 ### Control Flow Diagram 
 
-![Control_Flow](~\docs\Pictures\Control_Flow.png)
+![Control_Flow](./docs/Pictures/Control_Flow.png)
 
 
 
