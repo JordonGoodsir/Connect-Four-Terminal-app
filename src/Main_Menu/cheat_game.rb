@@ -1,6 +1,4 @@
-# require 'colorize'
-# require 'io/console' 
-# require_relative 'board.rb' 
+ 
 
 
 

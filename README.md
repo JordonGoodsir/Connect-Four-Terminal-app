@@ -50,7 +50,13 @@ Extras
 
 1. **Custom victory screen**   
 
-   Based off which player wins there will be a different victory screen for both. The victory screen will contain ASCII art text using the gem 'artii', thus adding authenticity and a satisfaction to winning.
+   Based off which player wins there will be a different victory screen for both. The victory screen will contain ASCII art text using the gem 'artii', thus adding authenticity and a satisfaction to winning.  
+   
+   
+   
+2. **Automatic victory detection** 
+
+   Based off users moves, the game will detect a victory. This will be divided into three variables, horizontal , vertical and diagonal victory. The game will constantly cycle thought the board array to see if anyone one of these conditions is met. If any of these conditions is met players will be taken to a victory screen.
 
 
 
@@ -92,33 +98,33 @@ Error handling instances include
 
 ### **Implementation Plan** 
 
+**More detail on Trello:**https://trello.com/invite/b/J5UtRdlD/38d45612e910d523adb949c06649f940/connect-4-code
 
-
-| Features                            | Checklist                                                    | Priority | Deadline |
-| ----------------------------------- | ------------------------------------------------------------ | -------- | -------- |
-| Key binding movement                | Understand  gem "io/console"                                 | P1       |          |
-|                                     | Bind keys to change index in array                           | P1       |          |
-|                                     | "a" moves left in array                                      | P1       |          |
-|                                     | "d" moves right in array                                     | P1       |          |
-|                                     | make when pressing "a" or "d" previous index is swapped so it appears as though the player piece is moving. | P1       |          |
-|                                     |                                                              |          |          |
-| Board Visual                        | Make board out of array values                               | P1       |          |
-|                                     | Colour board (using 'colorize' gem)                          | Extra    |          |
-|                                     | Display players name above board                             | P2       |          |
-|                                     | Enable printing of board via method                          | P1       |          |
-|                                     | Enable printing of all visuals via method                    | P1       |          |
-|                                     |                                                              |          |          |
-| Main Menu                           | Familiarise with gem "tty prompts"                           | P2       |          |
-|                                     | create options: play , tutorial, exit                        | P2       |          |
-|                                     | add functionality to each option                             | P2       |          |
-|                                     | Link all necessary files to main menu                        | P2       |          |
-|                                     | ASCII art for main menu title                                | Extra    |          |
-|                                     |                                                              |          |          |
-| Alternating turns and piece placing | Bind enter key to placing piece                              | P1       |          |
-|                                     | functionality to key, place piece                            | P1       |          |
-|                                     | functionality to key, change user turn                       | P1       |          |
-|                                     | colour users name based off turn                             | extra    |          |
-|                                     | handle error, if users input invalid restart their turn      | P1       |          |
+| Features                            | Checklist                                                    | Priority | Deadline      |
+| ----------------------------------- | ------------------------------------------------------------ | -------- | ------------- |
+| Key binding movement                | Understand  gem "io/console"                                 | P1       | 23 April      |
+|                                     | Bind keys to change index in array                           | P1       | 23 April      |
+|                                     | "a" moves left in array                                      | P1       | 23 April      |
+|                                     | "d" moves right in array                                     | P1       | 23 April      |
+|                                     | make when pressing "a" or "d" previous index is swapped so it appears as though the player piece is moving. | P1       | 23 April      |
+|                                     |                                                              |          |               |
+| Board Visual                        | Make board out of array values                               | P1       | 22 April      |
+|                                     | Colour board (using 'colorize' gem)                          | Extra    | If extra time |
+|                                     | Display players name above board                             | P2       | 26 April      |
+|                                     | Enable printing of board via method                          | P1       | 25 April      |
+|                                     | Enable printing of all visuals via method                    | P1       | 25 April      |
+|                                     |                                                              |          |               |
+| Main Menu                           | Familiarise with gem "tty prompts"                           | P2       | 26 April      |
+|                                     | create options: play , tutorial, exit                        | P2       | 26 April      |
+|                                     | add functionality to each option                             | P2       | 26 April      |
+|                                     | Link all necessary files to main menu                        | P2       | 26 April      |
+|                                     | ASCII art for main menu title                                | Extra    | if extra time |
+|                                     |                                                              |          |               |
+| Alternating turns and piece placing | Bind enter key to placing piece                              | P1       | 24 April      |
+|                                     | functionality to key, place piece                            | P1       | 24 April      |
+|                                     | functionality to key, change user turn                       | P1       | 24 April      |
+|                                     | colour users name based off turn                             | extra    | If extra time |
+|                                     | handle error, if users input invalid restart their turn      | P1       | 24 April      |
 
 
 
@@ -128,9 +134,48 @@ Error handling instances include
 
 
 
+### Game Testing 
 
 
 
+
+
+| Feature                                                      | What is it?                                               | Expected outcome                                             | Actual Outcome                                               | Is it a problem?                          |
+| ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ----------------------------------------- |
+| **Welcome screen**                                           | An ASCII drawing of the connect 4 logo                    | prints "connect" then "four" with a slight delay             | As expected                                                  | No                                        |
+| **Key hitting while not prompted**                           |                                                           | Nothing should happen                                        | The keys are printed on the screen at the position of curser at the time | only visually, does not effect mechanics. |
+| **Main Menu**                                                | A menu three available options "Play", "Tutorial", "Quit" | users should be able to cycles through options and select which one they want. | as expected                                                  | no                                        |
+| **Tutorial**                                                 | a guide on how to play and key binds                      | If user selects tutorial they should be taken to a screen with instructions and able to return to main menu at anytime. | as expected                                                  | no                                        |
+| **Quit**                                                     | exits program, gives outro message                        | when the user selects quit they will be displayed with a thank you message and the program will quit. | as expected                                                  | no                                        |
+| **Play**                                                     | goes to name selection                                    | user should be prompted to give names to both player 1 and 2. | as expected                                                  | no                                        |
+| **User creation limits**                                     | limiting how many characters in users name                | If user enters a  name that's too long they will be repromoted to enter their name. | as expected                                                  | no                                        |
+| **Format**                                                   | displays all data neatly and in intended way              | This method should print names of users at top, then selector array, then the board. | as expected                                                  | no                                        |
+| **board control "a"**                                        | moves user left in selector array                         | should move the users piece left in the selector array and be refreshed each time key pressed. | as expected                                                  | no                                        |
+| **board control "d**                                         | moves user right in selector array                        | should move the users piece right in the selector array and be refreshed each time key pressed. | as expected                                                  | no                                        |
+| **board control "enter"**                                    | places users piece at bottom of board                     | should place users piece at bottom of board and change turn to next player. | as expected                                                  | no                                        |
+| **board control "q"**                                        | quits game                                                | should break out of the game loop and return to main menu.   | as expected                                                  | no                                        |
+| **What happens if I press enter and the column is already full?** |                                                           | The players piece should be reset to the middle of the board and it should still be their turn. | as expected                                                  | no                                        |
+| **What happens when I hit a board control during the main menu?** |                                                           | nothing should happen as the controls are set only in the game. | as expected                                                  | no                                        |
+| **board control "w"**                                        | victory prompt                                            | Takes users to victory screen where they choose who has won. | as expected                                                  | no                                        |
+| **Victory screen**                                           | custom victory message                                    | based of user selected in board control "w", it should display a victory message for the victorious user and then prompt them to return to the main menu. | as expected                                                  | no                                        |
+
+
+
+### **Help?**  
+
+
+
+**Launching the game**
+
+To launch the game run the file called, run_app.sh. This will install all necessary gems for the program and launch it. 
+
+
+
+**How to use the app** 
+
+You can use the in game tutorial which informs you on how to play the game and the controls or look at the image below: 
+
+![](\docs\Pictures\tutorial_pic.PNG)
 
 
 
