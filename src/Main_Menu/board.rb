@@ -1,4 +1,4 @@
-require_relative 'cheat_game.rb'
+require_relative 'game.rb'
 
 $board = [ 
     ["|","       ","|","       ","|","       ","|","       ","|","       ","|","       ","|","       ","|"], 

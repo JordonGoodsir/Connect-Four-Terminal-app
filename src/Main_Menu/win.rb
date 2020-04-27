@@ -1,3 +1,7 @@
+#This file is an unfinished feature, which has not been added to the main game as of yet.
+
+
+
 $board1 = [ 
     ["|","       ","|","       ","|","       ","|","       ","|","       ","|","       ","|","       ","|"], 
     ["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-"], 
@@ -5,18 +9,18 @@ $board1 = [
     ["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-"],   
     ["|","       ","|","       ","|","       ","|","       ","|","       ","|","       ","|","       ","|"], 
     ["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-"],    
-    ["|","       ","|","       ","|","       ","|","       ","|","       ","|","       ","|","       ","|"],
+    ["|","       ","|","       ","|","       ","|","       ","|","       ","|","       ","|","   x   ","|"],
     ["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-"],    
-    ["|","       ","|","       ","|","       ","|","   x   ","|","       ","|","       ","|","       ","|"],  
+    ["|","   x   ","|","   x   ","|","       ","|","       ","|","       ","|","       ","|","   x   ","|"],  
     ["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-"],   
-    ["|","   x   ","|","       ","|","       ","|","   x   ","|","       ","|","       ","|","   x   ","|"], 
+    ["|","   x   ","|","   x   ","|","       ","|","       ","|","       ","|","       ","|","   x   ","|"], 
     ["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-"],    
-    ["|","   x   ","|","       ","|","       ","|","   x   ","|","       ","|","       ","|","   x   ","|"], 
+    ["|","   x   ","|","   x   ","|","       ","|","       ","|","       ","|","       ","|","   x   ","|"], 
     ["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-"],  
 ]   
 
 
-
+#working :)
 def horizontal_win
 true_count = 1
 $board1.each_with_index do |value, index| 
@@ -50,6 +54,8 @@ end
 end 
 end 
 
+
+#not working
 def vertical_win
     true_count = 1
     $board1.each_with_index do |value, index| 
@@ -57,18 +63,23 @@ def vertical_win
     if (index.even? or index == 0) 
         value.each_with_index do |v, i|   
             case v 
-    
-            when "   x   "   
-            main_index_add = index + 2   
+            
+            # when "       " 
+            # true_count = 0
+            
+            when "   x   "    
+            main_index_add = index + 2  
+            
            
             
-            #i also only want it to add to the count if the index value is the same  
+            #I only want it to add to the count if the index value is the same  
 
             #experiment 
             # i == same i 
-            # and (i == ) 
-
-            if  main_index_add <= 12 and $board1[main_index_add][i].include?("   x   ") 
+            # and (i == )  
+            
+            if  (main_index_add <= 12 and $board1[main_index_add][i].include?("   x   ")) and i  
+                
                 index += 2  
                 true_count += 1 
                 puts "#{i} and  #{index}"
@@ -89,6 +100,7 @@ def vertical_win
     end 
     end  
 
+    #not working
     def diagonal_win
         true_count = 1
         $board1.each_with_index do |value, index| 
@@ -125,58 +137,4 @@ def vertical_win
 
 # horizontal_win 
 vertical_win  
-# diagonal_win
-
-# line 1 
-# 1, 3, 5, 7, 9, 11, 13
-    
-    
-# def vertical_win?
-#     times_in_a_row = 0
-#     @board.rows.each do |row|
-#       if row[(column.ord - 65)].player == @player
-#         times_in_a_row += 1
-#       else
-#         times_in_a_row = 0
-#       end
-#       return true if times_in_a_row == 4
-#     end
-#     false
-#   end
-
-#   def horizontal_win?
-#     times_in_a_row = 0
-#     @board.rows[@move_row].each do |space|
-#       if space.player == @player
-#         times_in_a_row += 1
-#       else
-#         times_in_a_row = 0
-#       end
-#       return true if times_in_a_row == 4
-#     end
-#     false
-#   end
-
-#   def diagonal_win?
-#     diagonal = []
-#     #down_right
-#     diagonal[0] = [[@move_row+1, (@column.ord - 65)+1], [@move_row+2, (@column.ord - 65)+2], [@move_row+3, (@column.ord - 65)+3]]
-#     #up_right
-#     diagonal[1] = [[@move_row-1, (@column.ord - 65)+1], [@move_row-2, (@column.ord - 65)+2], [@move_row-3, (@column.ord - 65)+3]]
-#     #up_left
-#     diagonal[2] = [[@move_row-1, (@column.ord - 65)-1], [@move_row-2, (@column.ord - 65)-2], [@move_row-3, (@column.ord - 65)-3]]
-#      #down_left
-#     diagonal[3] = [[@move_row+1, (@column.ord - 65)-1], [@move_row+2, (@column.ord - 65)-2], [@move_row+3, (@column.ord - 65)-3]]
-#     diagonal.each do |line|
-#       times_in_a_row = 1
-#       line.each do |point|
-#         if !@board.rows[point[0]].nil? && !@board.rows[point[0]][point[1]].nil? && @board.rows[point[0]][point[1]].player == @player
-#           times_in_a_row += 1
-#         else
-#           times_in_a_row = 1
-#         end
-#         return true if times_in_a_row == 4
-#       end
-#     end
-#     false
-#   end
+# diagonal_win 

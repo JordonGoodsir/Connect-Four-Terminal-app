@@ -13,9 +13,9 @@ class NameTest < Test::Unit::TestCase
     assert_raise TooLong1 do
         
         begin
-            puts "Player1 What is your gAmEr name(max 7 characters)?" 
+            puts "Player1 What is your gAmEr name(max 8 characters)?" 
             $player1_name = gets.chomp.split.map(&:capitalize).join(' ')   
-            raise TooLong1, "Sorry player1 that names more than 7 characters, try again :)" if $player1_name.length >= 7 
+            raise TooLong1, "Sorry player1 that names more than 8 characters, try again :)" if $player1_name.length > 8 
             
         end
     end  
@@ -26,9 +26,9 @@ end
         assert_raise TooLong2 do
         
             begin
-                puts "Player2 What is your gAmEr name(max 7 characters)?" 
+                puts "Player2 What is your gAmEr name(max 8 characters)?" 
                 $player2_name = gets.chomp.split.map(&:capitalize).join(' ')   
-                raise TooLong2, "Sorry player1 that names more than 7 characters, try again :)" if $player2_name.length >= 7  
+                raise TooLong2, "Sorry player1 that names more than 8 characters, try again :)" if $player2_name.length > 8  
 
     end 
 end 

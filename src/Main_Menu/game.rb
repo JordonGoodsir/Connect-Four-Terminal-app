@@ -1,8 +1,4 @@
- 
-
-
-
-class Game 
+ class Game 
    
     @@player1_icon = "x".red 
     @@player2_icon = "o".yellow 

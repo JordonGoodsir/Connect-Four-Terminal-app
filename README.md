@@ -12,7 +12,7 @@ Connect Four introduces the two characters with the main menu, for which they ar
 
 ##### Problem it will solve 
 
-Connect Four will attempt to solve boredom and possibly act as an icebreaker. Solving boredom through its intellectually challenging and entertaining nature, as both players must analyse the others move so as to not allow them to win. Acting as an icebreaker as organisations (e.g.. schools) could use with app as a way to introduce new people through Connect Fours co-op nature. 
+Connect Four will attempt to solve boredom and possibly act as an icebreaker. Solving boredom through its intellectually challenging and entertaining nature, as both players must analyse the others move so as to not allow them to win. Acting as an icebreaker as organisations (e.g. schools) could use with app as a way to introduce new people through Connect Fours co-op nature. 
 
 ##### Target Audience 
 
@@ -100,31 +100,31 @@ Error handling instances include
 
 **More detail on Trello:**https://trello.com/invite/b/J5UtRdlD/38d45612e910d523adb949c06649f940/connect-4-code
 
-| Features                            | Checklist                                                    | Priority | Deadline      |
-| ----------------------------------- | ------------------------------------------------------------ | -------- | ------------- |
-| Key binding movement                | Understand  gem "io/console"                                 | P1       | 23 April      |
-|                                     | Bind keys to change index in array                           | P1       | 23 April      |
-|                                     | "a" moves left in array                                      | P1       | 23 April      |
-|                                     | "d" moves right in array                                     | P1       | 23 April      |
-|                                     | make when pressing "a" or "d" previous index is swapped so it appears as though the player piece is moving. | P1       | 23 April      |
-|                                     |                                                              |          |               |
-| Board Visual                        | Make board out of array values                               | P1       | 22 April      |
-|                                     | Colour board (using 'colorize' gem)                          | Extra    | If extra time |
-|                                     | Display players name above board                             | P2       | 26 April      |
-|                                     | Enable printing of board via method                          | P1       | 25 April      |
-|                                     | Enable printing of all visuals via method                    | P1       | 25 April      |
-|                                     |                                                              |          |               |
-| Main Menu                           | Familiarise with gem "tty prompts"                           | P2       | 26 April      |
-|                                     | create options: play , tutorial, exit                        | P2       | 26 April      |
-|                                     | add functionality to each option                             | P2       | 26 April      |
-|                                     | Link all necessary files to main menu                        | P2       | 26 April      |
-|                                     | ASCII art for main menu title                                | Extra    | if extra time |
-|                                     |                                                              |          |               |
-| Alternating turns and piece placing | Bind enter key to placing piece                              | P1       | 24 April      |
-|                                     | functionality to key, place piece                            | P1       | 24 April      |
-|                                     | functionality to key, change user turn                       | P1       | 24 April      |
-|                                     | colour users name based off turn                             | extra    | If extra time |
-|                                     | handle error, if users input invalid restart their turn      | P1       | 24 April      |
+| Features                            | Checklist                                                    | Priority | Deadline      | Done? |
+| ----------------------------------- | ------------------------------------------------------------ | -------- | ------------- | ----- |
+| Key binding movement                | Understand  gem "io/console"                                 | P1       | 23 April      | Yes   |
+|                                     | Bind keys to change index in array                           | P1       | 23 April      | Yes   |
+|                                     | "a" moves left in array                                      | P1       | 23 April      | Yes   |
+|                                     | "d" moves right in array                                     | P1       | 23 April      | Yes   |
+|                                     | make when pressing "a" or "d" previous index is swapped so it appears as though the player piece is moving. | P1       | 23 April      | Yes   |
+|                                     |                                                              |          |               |       |
+| Board Visual                        | Make board out of array values                               | P1       | 22 April      | Yes   |
+|                                     | Colour board (using 'colorize' gem)                          | Extra    | If extra time |       |
+|                                     | Display players name above board                             | P2       | 26 April      | Yes   |
+|                                     | Enable printing of board via method                          | P1       | 25 April      | Yes   |
+|                                     | Enable printing of all visuals via method                    | P1       | 25 April      | Yes   |
+|                                     |                                                              |          |               |       |
+| Main Menu                           | Familiarise with gem "tty prompts"                           | P2       | 26 April      | Yes   |
+|                                     | create options: play , tutorial, exit                        | P2       | 26 April      | Yes   |
+|                                     | add functionality to each option                             | P2       | 26 April      | Yes   |
+|                                     | Link all necessary files to main menu                        | P2       | 26 April      | Yes   |
+|                                     | ASCII art for main menu title                                | Extra    | if extra time | Yes   |
+|                                     |                                                              |          |               |       |
+| Alternating turns and piece placing | Bind enter key to placing piece                              | P1       | 24 April      | Yes   |
+|                                     | functionality to key, place piece                            | P1       | 24 April      | Yes   |
+|                                     | functionality to key, change user turn                       | P1       | 24 April      | Yes   |
+|                                     | colour users name based off turn                             | extra    | If extra time | Yes   |
+|                                     | handle error, if users input invalid restart their turn      | P1       | 24 April      | Yes   |
 
 
 
@@ -167,13 +167,11 @@ Error handling instances include
 
 **Launching the game**
 
-To launch the game run the file called, run_app.sh. This will install all necessary gems for the program and launch it. 
-
-​	
+To launch the game run the file called,"run_app.sh" This will install all necessary gems for the program and launch it.    
 
 **How to use the app** 
 
-You can use the in game tutorial which informs you on how to play the game and the controls or look at the image below: 
+You can use the in game tutorial which informs you on how to play the game and the controls,  this being located as the second option in the main menu, or look at the image below: 
 
 ![](./docs/Pictures/tutorial_pic.PNG)
 

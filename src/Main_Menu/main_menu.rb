@@ -1,15 +1,3 @@
-require 'io/console'
-require "colorize" 
-require "tty-prompt" 
-require 'artii'  
-require 'bar-of-progress' 
-require_relative "user_creation.rb" 
-require_relative "tutorial.rb"  
-require_relative "cheat_game.rb"
-require_relative 'board.rb' 
-require_relative 'victory_screen.rb'
- 
-
 def main_menu 
 system("clear") 
 
@@ -36,8 +24,6 @@ sleep 0.5
 
 
 puts
-
-
 
 
 choices = prompt.select("Welcome, what would you like to do?".rjust(51)) do |menu| 
@@ -90,20 +76,3 @@ def start_game
         main_menu 
     end 
 end 
-
-start_game
-
-
-
-
-
-
-
-
-                                                                                                          
-                                      
-                                                                                                              
-
-
-
- 
