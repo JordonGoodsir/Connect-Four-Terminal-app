@@ -169,13 +169,13 @@ Error handling instances include
 
 To launch the game run the file called, run_app.sh. This will install all necessary gems for the program and launch it. 
 
-
+​	
 
 **How to use the app** 
 
 You can use the in game tutorial which informs you on how to play the game and the controls or look at the image below: 
 
-![](\docs\Pictures\tutorial_pic.PNG)
+![](./docs/Pictures/tutorial_pic.PNG)
 
 
 
