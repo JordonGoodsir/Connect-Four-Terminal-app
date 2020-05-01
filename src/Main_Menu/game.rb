@@ -11,7 +11,8 @@
     @@called5 = 0
     @@called6 = 0  
     @@selector_array = ["        ","        ","        ","    #{@@player1_icon}    ","        ","        ","        "] 
-    @@game_over = false 
+    @@game_over = false  
+    $winner = 0
   
  
     def initialize(board) 
@@ -202,9 +203,10 @@ def check_win
   diagonal_win_right  
 
   if @@game_over 
-    system("clear")
+    sleep 1 
+    system("clear") 
     reset_board   
-    victory  
+    victory   
   end 
 end
 
@@ -258,14 +260,8 @@ end
                   else 
                   @@selector_array[past_position_a], @@selector_array[$count] = @@selector_array[$count], @@selector_array[past_position_a] 
                   format 
-                  end
+                  end 
 
-            when "w" 
-            system("clear")
-            reset_board   
-            victory 
-            
-            
             when "\r"  
                 #enter key
                 
@@ -308,9 +304,10 @@ end
             end  
             
           # puts win condition here  
-          check_win 
+          # check_win 
 
-            @@turn_counter += 1
+            @@turn_counter += 1 
+            $winner += 1
 
                 #changes players turn
                 if @@turn_counter.odd?
@@ -323,7 +320,8 @@ end
                 if $count != 3 
                     $count = 3 
                 end 
-                format 
+                format  
+                check_win
         end  
     end    
 end  
