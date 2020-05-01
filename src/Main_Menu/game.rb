@@ -11,6 +11,7 @@
     @@called5 = 0
     @@called6 = 0  
     @@selector_array = ["        ","        ","        ","    #{@@player1_icon}    ","        ","        ","        "] 
+    @@game_over = false 
   
  
     def initialize(board) 
@@ -52,9 +53,9 @@ def place_piece(called)
   other_values = called * -1 + 7  
   
  if @@turn_counter.odd? 
-    piece = "   #{@@player1_icon}   " 
+    @piece = "   #{@@player1_icon}   " 
   elsif @@turn_counter.even?
-    piece = "   #{@@player2_icon}   " 
+    @piece = "   #{@@player2_icon}   " 
   end
 
   if num_values < 0 
@@ -62,9 +63,151 @@ def place_piece(called)
   end  
  
   if num > -1  
-    $board[num][$count] = piece 
+    $board[num][$count] = @piece 
 end 
+end 
+
+#win registration
+
+def diagonal_win_right
+  true_count = 1
+  $board.each_with_index do |value, index| 
+
+
+  if (index.even? or index == 0)
+          value.each_with_index do |v, i|   
+          case v 
+  
+              
+          when @piece     
+              
+               
+              begin 
+              if 
+                  $board[index][i] == @piece and 
+                  $board[index + 2 ][i + 2] == @piece and
+                  $board[index + 4][i + 4] == @piece and
+                  $board[index + 6][i + 6] == @piece    
+                      @@game_over = true 
+              end
+          rescue 
+          end
+      end
+      
+      end
+  
+  end
+  end 
+  end  
+
+
+#working
+def diagonal_win_left
+  true_count = 1
+  $board.each_with_index do |value, index| 
+
+
+  if (index.even? or index == 0)
+          value.each_with_index do |v, i|   
+          case v 
+  
+          when @piece     
+           
+              begin 
+              if 
+                  $board[index][i] == @piece and 
+                  $board[index + 2 ][i -2] == @piece and
+                  $board[index + 4][i - 4] == @piece and
+                  $board[index + 6][i - 6] == @piece     
+                      @@game_over = true
+              end
+          rescue 
+          end
+      end
+      
+      end
+  
+  end
+  end 
+  end  
+  
+
+#working :)
+def horizontal_win
+true_count = 1
+$board.each_with_index do |value, index| 
+  
+if (index.even? or index == 0) 
+  value.each_with_index do |v, i|   
+      case v 
+
+      when @piece   
+      # adds 2 to the index to check the next avaliable slot for player    
+      add = i + 2
+      
+      
+      if  add <= 13 and $board[index][add].include?(@piece)
+          true_count += 1     
+
+      elsif true_count >= 4 
+          @@game_over = true  
+
+      else  
+          true_count = 1 
+      end 
+        
+      end
+  end
+
 end
+end 
+end 
+
+
+#working :))))
+def vertical_win  
+  normal_board = []
+  true_count = 1
+  $board.each_with_index do |value, index| 
+      
+  if (index.even? or index == 0)  
+      value.each_with_index do |v, i| 
+          case v 
+
+          when @piece 
+              begin
+              if $board[index][i] == @piece and
+                 $board[index + 2][i] == @piece and
+                 $board[index + 4][i] == @piece and
+                 $board[index + 6][i] == @piece  
+                      @@game_over = true  
+              end 
+          rescue 
+          end
+  end   
+end
+end
+end
+end 
+
+# def icons 
+# "   #{@@player1_icon}   " or "   #{@@player2_icon}   "
+# end
+
+
+def check_win 
+  horizontal_win 
+  vertical_win  
+  diagonal_win_left   
+  diagonal_win_right  
+
+  if @@game_over 
+    system("clear")
+    reset_board   
+    victory  
+  end 
+end
+
     
 
 #sets controls for selecting which coloumn player whishes to put piece in
@@ -164,6 +307,8 @@ end
               place_piece(@@called6)
             end  
             
+          # puts win condition here  
+          check_win 
 
             @@turn_counter += 1
 

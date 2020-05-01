@@ -45,7 +45,8 @@ $board = [
 @@turn_counter = 1 
 @@player1_icon = "x".red 
 @@player2_icon = "o".yellow   
-@@selector_array = ["        ","        ","        ","    #{@@player1_icon}    ","        ","        ","        "]
+@@selector_array = ["        ","        ","        ","    #{@@player1_icon}    ","        ","        ","        "] 
+@@game_over = false
 end 
 
 

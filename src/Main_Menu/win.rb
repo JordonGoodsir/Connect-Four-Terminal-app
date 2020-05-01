@@ -1,6 +1,6 @@
 #This file is an unfinished feature, which has not been added to the main game as of yet.
-
-
+require 'colorize'
+$game_over = false 
 
 $board1 = [ 
     ["|","       ","|","       ","|","       ","|","       ","|","       ","|","       ","|","       ","|"], 
@@ -9,16 +9,80 @@ $board1 = [
     ["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-"],   
     ["|","       ","|","       ","|","       ","|","       ","|","       ","|","       ","|","       ","|"], 
     ["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-"],    
-    ["|","   x   ","|","   x   ","|","   x   ","|","       ","|","       ","|","       ","|","       ","|"],
+    ["|","       ","|","       ","|","       ","|","       ","|","       ","|","        ","|","       ","|"],
     ["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-"],    
-    ["|","   x   ","|","   x   ","|","   x   ","|","       ","|","       ","|","   x   ","|","       ","|"],  
+    ["|","       ","|","       ","|","   x   ","|","   x   ","|","   x   ","|","       ","|","       ","|"],  
     ["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-"],   
-    ["|","   x   ","|","   x   ","|","   x   ","|","       ","|","       ","|","   x   ","|","       ","|"], 
+    ["|","       ","|","   x   ","|","   x   ","|","   x   ","|","       ","|","   x   ","|","       ","|"], 
     ["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-"],    
-    ["|","   x   ","|","   x   ","|","   x   ","|","       ","|","       ","|","   x   ","|","       ","|"], 
+    ["|","   x   ","|","   x   ","|","       ","|","       ","|","       ","|","       ","|","       ","|"], 
     ["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-"],  
 ]   
 
+
+def diagonal_win_right
+    true_count = 1
+    $board1.each_with_index do |value, index| 
+ 
+
+    if (index.even? or index == 0)
+            value.each_with_index do |v, i|   
+            case v 
+    
+                
+            when "   x   "     
+                
+                 
+                begin 
+                if 
+                    $board1[index][i] == "   x   " and 
+                    $board1[index + 2 ][i + 2] == "   x   " and
+				    $board1[index + 4][i + 4] == "   x   " and
+                    $board1[index + 6][i + 6] == "   x   "     
+                        $game_over = true 
+                end
+            rescue 
+            end
+        end
+        
+        end
+    
+    end
+    end 
+    end  
+
+
+#working
+def diagonal_win_left
+    true_count = 1
+    $board1.each_with_index do |value, index| 
+ 
+
+    if (index.even? or index == 0)
+            value.each_with_index do |v, i|   
+            case v 
+    
+                
+            when "   x   "     
+             
+                begin 
+                if 
+                    $board1[index][i] == "   x   " and 
+                    $board1[index + 2 ][i -2] == "   x   " and
+				    $board1[index + 4][i - 4] == "   x   " and
+                    $board1[index + 6][i - 6] == "   x   "     
+                        $game_over = true
+                end
+            rescue 
+            end
+        end
+        
+        end
+    
+    end
+    end 
+    end  
+    
 
 #working :)
 def horizontal_win
@@ -35,15 +99,13 @@ if (index.even? or index == 0)
         
         
         if  add <= 13 and $board1[index][add].include?("   x   ")
-            true_count += 1 
-            puts true_count    
+            true_count += 1     
 
         elsif true_count >= 4 
-            puts "HORIZONTAL VICTORY" 
-
+            $game_over = true 
+            
         else  
             true_count = 1 
-            puts "FAILURE"
         end 
           
         end
@@ -55,79 +117,42 @@ end
 
 
 #working :))))
-def vertical_win 
+def vertical_win  
     normal_board = []
     true_count = 1
     $board1.each_with_index do |value, index| 
         
     if (index.even? or index == 0)  
-            normal_board.push(value) 
-    end  
-end
-  
-normal_board.transpose.each {|row_v|  
+        value.each_with_index do |v, i| 
+            case v 
 
-row_v.each_cons(1).any? { |x,y,z,w|  
-    
-    
-    true_or_false = x == "   x   " and y == "   x   " and z == "   x   " and w == "   x   "
-    
-    case true_or_false 
-
-    when true 
-     true_count += 1 
-     if true_count >= 4  
-        puts "I HECKING DID IT" 
-     end
-    
-    when false 
-    true_count = 0  
-    puts "fail"
-    # # puts count
-    end
-}
-} 
-end
-
-
+            when "   x   " 
+                begin
+                if $board1[index][i] == "   x   " and
+				    $board1[index + 2][i] == "   x   " and
+				      $board1[index + 4][i] == "   x   " and
+                        $board1[index + 6][i] == "   x   " 
      
-
-    #not working
-    def diagonal_win
-        true_count = 1
-        $board1.each_with_index do |value, index| 
-            
-        if (index.even? or index == 0) 
-            value.each_with_index do |v, i|   
-                case v 
-        
-                when "   x   "   
-           
-                    diagonal_index = index + 2
-                    diagonal_i = i + 2  
-    
-    
-                if  (diagonal_i <= 13 and diagonal_index <= 12)  and $board1[diagonal_index][diagonal_i].include?("   x   ")
-                    true_count += 1 
-                    puts "#{i} and  #{index}"
-                    puts "true count = #{true_count}"    
-        
-                elsif true_count >= 4 
-                    puts "DIAGONAL VICTORY" 
-        
-                else  
-                    true_count = 1 
-                    puts "FAILURE"
+                        $game_over = true  
                 end 
-                  
-                end
+            rescue 
             end
-        
-        end
-        end 
-        end 
+    end   
+end
+end
+end
+end
 
+
+
+# puts "    x    ".red
+     
+selector_array = ["        ","        ","        ","    #{@@player1_icon}    ","        ","        ","        "] 
+
+selector_array[3]
 # horizontal_win 
-vertical_win  
-# diagonal_win  
+# vertical_win  
+# diagonal_win_left   
+# diagonal_win_right 
 
+# puts $game_over
