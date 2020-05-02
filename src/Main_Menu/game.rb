@@ -36,7 +36,21 @@ end
 end
 
 def print_board     
-  $board.each{ |each_board| puts each_board.join}
+  $board.each_with_index do |value, index| 
+         
+    value.each_with_index do |v, i| 
+        case v 
+
+        when "|" 
+        $board[index][i] = "|".blue
+            
+        when "-" 
+        $board[index][i] = "-".blue 
+        end 
+    end  
+    puts value.join 
+
+end 
 end  
 
 def format 
@@ -44,7 +58,6 @@ def format
   print_names
   puts @@selector_array.join
   print_board  
-  puts "         Press w at anytime to declare a winner!"
 end
 
 
@@ -70,8 +83,10 @@ end
 
 #win registration
 
-def diagonal_win_right
-  true_count = 1
+def diagonal_win_right 
+  color_flash = [@piece.magenta, @piece.light_magenta, @piece.cyan, @piece.light_cyan, @piece.light_black]  
+  flash = 0
+  flash_times = 0
   $board.each_with_index do |value, index| 
 
 
@@ -89,21 +104,45 @@ def diagonal_win_right
                   $board[index + 2 ][i + 2] == @piece and
                   $board[index + 4][i + 4] == @piece and
                   $board[index + 6][i + 6] == @piece    
-                      @@game_over = true 
-              end
-          rescue 
-          end
-      end
-      
-      end
+                  loop do 
+                        
+                    format
   
+                    $board[index][i] = color_flash[flash]
+                    $board[index + 2][i +2] = color_flash[flash] 
+                    $board[index + 4][i +4] = color_flash[flash] 
+                    $board[index + 6][i +6] = color_flash[flash]  
+  
+                    flash +=1 
+  
+                    if flash >= 4 
+                        flash = 0 
+                        flash_times +=1  
+                    elsif flash_times >= 2 
+                        break 
+                    end 
+                
+                    sleep 0.5
+                    system("clear")
+                
+                end  
+                @@game_over = true
+              end
+            
+                end   
+              end
+            rescue 
+            end
+    end   
   end
-  end 
-  end  
+  end
 
 
 #working
-def diagonal_win_left
+def diagonal_win_left 
+  color_flash = [@piece.magenta, @piece.light_magenta, @piece.cyan, @piece.light_cyan, @piece.light_black]  
+  flash = 0
+  flash_times = 0
   true_count = 1
   $board.each_with_index do |value, index| 
 
@@ -120,21 +159,46 @@ def diagonal_win_left
                   $board[index + 2 ][i -2] == @piece and
                   $board[index + 4][i - 4] == @piece and
                   $board[index + 6][i - 6] == @piece     
-                      @@game_over = true
-              end
-          rescue 
-          end
-      end
-      
-      end
+                  
+                  loop do 
+                        
+                    format
   
+                    $board[index][i] = color_flash[flash]
+                    $board[index + 2][i -2] = color_flash[flash] 
+                    $board[index + 4][i -4] = color_flash[flash] 
+                    $board[index + 6][i -6] = color_flash[flash]  
+  
+                    flash +=1 
+  
+                    if flash >= 4 
+                        flash = 0 
+                        flash_times +=1  
+                    elsif flash_times >= 2 
+                        break 
+                    end 
+                
+                    sleep 0.5
+                    system("clear")
+                
+                end  
+                @@game_over = true
+              end
+            
+                end   
+              end
+            rescue 
+            end
+    end   
   end
-  end 
-  end  
+  end
   
 
 #working :)
-def horizontal_win
+def horizontal_win  
+color_flash = [@piece.magenta, @piece.light_magenta, @piece.cyan, @piece.light_cyan, @piece.light_black]  
+flash = 0
+flash_times = 0
 true_count = 1
 $board.each_with_index do |value, index| 
   
@@ -143,32 +207,52 @@ if (index.even? or index == 0)
       case v 
 
       when @piece   
-      # adds 2 to the index to check the next avaliable slot for player    
-      add = i + 2
-      
-      
-      if  add <= 13 and $board[index][add].include?(@piece)
-          true_count += 1     
+        begin 
+          if 
+              $board[index][i] == @piece and 
+              $board[index][i + 2] == @piece and
+              $board[index][i + 4] == @piece and
+              $board[index][i + 6] == @piece     
+              
+              loop do 
+                    
+                format
 
-      elsif true_count >= 4 
-          @@game_over = true  
+                $board[index][i] = color_flash[flash]
+                $board[index][i + 2] = color_flash[flash] 
+                $board[index][i + 4] = color_flash[flash] 
+                $board[index][i + 6] = color_flash[flash]  
 
-      else  
-          true_count = 1 
-      end 
+                flash +=1 
+
+                if flash >= 4 
+                    flash = 0 
+                    flash_times +=1  
+                elsif flash_times >= 2 
+                    break 
+                end 
+            
+                sleep 0.5
+                system("clear")
+            
+            end  
+            @@game_over = true
+          end
         
-      end
-  end
-
+            end   
+          end
+        rescue 
+        end
+end   
 end
-end 
-end 
+end
 
 
 #working :))))
 def vertical_win  
-  normal_board = []
-  true_count = 1
+  color_flash = [@piece.magenta, @piece.light_magenta, @piece.cyan, @piece.light_cyan, @piece.light_black]  
+  flash = 0
+  flash_times = 0
   $board.each_with_index do |value, index| 
       
   if (index.even? or index == 0)  
@@ -181,19 +265,39 @@ def vertical_win
                  $board[index + 2][i] == @piece and
                  $board[index + 4][i] == @piece and
                  $board[index + 6][i] == @piece  
-                      @@game_over = true  
-              end 
+                 
+                 loop do 
+                        
+                  format
+
+                  $board[index][i] = color_flash[flash]
+                  $board[index + 2][i] = color_flash[flash] 
+                  $board[index + 4][i] = color_flash[flash] 
+                  $board[index + 6][i] = color_flash[flash]  
+
+                  flash +=1 
+
+                  if flash >= 4 
+                      flash = 0 
+                      flash_times +=1  
+                  elsif flash_times >= 2 
+                      break 
+                  end 
+              
+                  sleep 0.5
+                  system("clear")
+              
+              end  
+              @@game_over = true
+            end
+          
+              end   
+            end
           rescue 
           end
   end   
 end
 end
-end
-end 
-
-# def icons 
-# "   #{@@player1_icon}   " or "   #{@@player2_icon}   "
-# end
 
 
 def check_win 
@@ -202,8 +306,7 @@ def check_win
   diagonal_win_left   
   diagonal_win_right  
 
-  if @@game_over 
-    sleep 1 
+  if @@game_over  
     system("clear") 
     reset_board   
     victory   

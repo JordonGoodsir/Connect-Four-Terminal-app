@@ -1,4 +1,5 @@
-require_relative 'game.rb'
+
+require "colorize"
 
 $board = [ 
     ["|","       ","|","       ","|","       ","|","       ","|","       ","|","       ","|","       ","|"], 
@@ -51,24 +52,5 @@ end
 
 
 
-#potential colouring code
 
-# $board.each{ |each_board|  
-    
-     
-# each_board.each {|the|    
-# if the == "-"  
-#     the = "-".blue 
-# end  
-# if the == "|"  
-#     the = "|".blue 
-# end  
-# if the == "       "  
-#     the = "       " 
-# end
-# p the.split.join 
-# }
-    
-# } 
 
-# $board.each{ |each_board| puts each_board.join.blue}
